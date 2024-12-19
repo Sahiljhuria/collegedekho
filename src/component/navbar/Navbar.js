@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link for routing
 import collegelogo from "../images/collegedekhologo.c96051fc.svg";
 import redarrow from "../images/callsvgOrange.f1c1aae6.svg";
 import arrow from "../images/mailOrange.441c4074.svg";
@@ -9,276 +10,120 @@ import linkedin from "../images/linkedin.98d06e6a.svg";
 import youtube from "../images/youtube.7cd62c01.svg";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const dropdownData = {
     Colleges: [
-      {
-        title: "Colleges By Degrees",
-        items: [
-          "BTech colleges in India",
-          "MTech colleges in India",
-          "BArch colleges in India",
-          "Diploma colleges in India",
-          "View All",
-        ],
-      },
-      {
-        title: "Colleges By Location",
-        items: [
-          "Engineering Colleges in Maharashtra",
-          "Engineering Colleges in Tamil Nadu",
-          "Engineering Colleges in Uttar Pradesh",
-          "Engineering Colleges in Karnataka",
-          "View All",
-        ],
-      },
-      {
-        title: "Colleges By Location",
-        items: [
-          "Engineering Colleges in Maharashtra",
-          "Engineering Colleges in Tamil Nadu",
-          "Engineering Colleges in Uttar Pradesh",
-          "Engineering Colleges in Karnataka",
-          "View All",
-        ],
-      },
+      { path: "/colleges" }
     ],
     Exams: [
-      {
-        title: "Entrance Exams",
-        items: ["JEE Main", "JEE Advanced", "NEET UG", "GATE", "View All"],
-      },
-      {
-        title: "State-Level Exams",
-        items: ["MH CET", "AP EAMCET", "KCET", "TANCET", "View All"],
-      },
-      {
-        title: "Colleges By Location",
-        items: [
-          "Engineering Colleges in Maharashtra",
-          "Engineering Colleges in Tamil Nadu",
-          "Engineering Colleges in Uttar Pradesh",
-          "Engineering Colleges in Karnataka",
-          "View All",
-        ],
-      },
-    ],
-    "Latest update": [
-      {
-        title: "Colleges By Degrees",
-        items: [
-          "BTech colleges in India",
-          "MTech colleges in India",
-          "BArch colleges in India",
-          "Diploma colleges in India",
-          "View All",
-        ],
-      },
-      {
-        title: "Colleges By Location",
-        items: [
-          "Engineering Colleges in Maharashtra",
-          "Engineering Colleges in Tamil Nadu",
-          "Engineering Colleges in Uttar Pradesh",
-          "Engineering Colleges in Karnataka",
-          "View All",
-        ],
-      },
-      {
-        title: "Colleges By Location",
-        items: [
-          "Engineering Colleges in Maharashtra",
-          "Engineering Colleges in Tamil Nadu",
-          "Engineering Colleges in Uttar Pradesh",
-          "Engineering Colleges in Karnataka",
-          "View All",
-        ],
-      },
+      { path: "/exams" }
     ],
     Courses: [
-      {
-        title: "Undergraduate Courses",
-        items: ["B.Tech", "B.Sc", "B.Com", "BA", "View All"],
-      },
-      {
-        title: "Postgraduate Courses",
-        items: ["M.Tech", "MBA", "M.Sc", "MA", "View All"],
-      },
-      {
-        title: "Colleges By Location",
-        items: [
-          "Engineering Colleges in Maharashtra",
-          "Engineering Colleges in Tamil Nadu",
-          "Engineering Colleges in Uttar Pradesh",
-          "Engineering Colleges in Karnataka",
-          "View All",
-        ],
-      },
+      { path: "/courses" }
     ],
     Careers: [
-      {
-        title: "Popular Career Options",
-        items: [
-          "Data Scientist",
-          "Software Engineer",
-          "Doctor",
-          "Chartered Accountant",
-          "View All",
-        ],
-      },
-      {
-        title: "Emerging Careers",
-        items: [
-          "AI Specialist",
-          "Blockchain Developer",
-          "Cloud Architect",
-          "Cybersecurity Analyst",
-          "View All",
-        ],
-      },
-      {
-        title: "Colleges By Location",
-        items: [
-          "Engineering Colleges in Maharashtra",
-          "Engineering Colleges in Tamil Nadu",
-          "Engineering Colleges in Uttar Pradesh",
-          "Engineering Colleges in Karnataka",
-          "View All",
-        ],
-      },
+      { path: "/careers" }
+    ],
+    "Latest Update": [
+      { path: "/latest-update" }
     ],
     More: [
-      {
-        title: "Popular Career Options",
-        items: [
-          "Data Scientist",
-          "Software Engineer",
-          "Doctor",
-          "Chartered Accountant",
-          "View All",
-        ],
-      },
-      {
-        title: "Emerging Careers",
-        items: [
-          "AI Specialist",
-          "Blockchain Developer",
-          "Cloud Architect",
-          "Cybersecurity Analyst",
-          "View All",
-        ],
-      },
-      {
-        title: "Colleges By Location",
-        items: [
-          "Engineering Colleges in Maharashtra",
-          "Engineering Colleges in Tamil Nadu",
-          "Engineering Colleges in Uttar Pradesh",
-          "Engineering Colleges in Karnataka",
-          "View All",
-        ],
-      },
-    ],
+      { path: "/more" }
+    ]
+  };
+
+  const handleMenuClick = (menu) => {
+    if (activeMenu === menu) {
+      setIsDropdownOpen(!isDropdownOpen); // Toggle dropdown visibility
+    } else {
+      setActiveMenu(menu);
+      setIsDropdownOpen(true); // Open dropdown
+    }
   };
 
   return (
     <header className="bg-blue-900 text-white">
-      <div className="container mx-auto px-4 py-2">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
         {/* Top Section */}
         <div className="flex justify-between items-center">
-          {/* Logo Section */}
-        
+          {/* Logo */}
+          <div className="flex items-center">
+            <img src={collegelogo} className="h-12 w-auto" alt="CollegeDekho Logo" />
+          </div>
 
-          {/* Contact Info */}
-          <div className="hidden md:flex items-center text-sm font-medium space-x-4">
-            <div className="flex gap-1">
-              <img src={redarrow} alt="Call Icon" />
+          {/* Contact Info (Hidden on small screens) */}
+          <div className="hidden lg:flex items-center text-sm space-x-6">
+            <div className="flex items-center gap-2">
+              <img src={redarrow} alt="Call Icon" className="h-5 w-5" />
               1800-572-9877
             </div>
-            <div className="flex gap-1">
-              <img src={arrow} alt="Email Icon" />
+            <div className="flex items-center gap-2">
+              <img src={arrow} alt="Email Icon" className="h-5 w-5" />
               hello@collegedekho.com
             </div>
           </div>
 
-          {/* Social Media Links */}
-          <div className="hidden md:flex gap-2">
-            <p className="mt-2 text-sm">We’re on your favourite socials!</p>
-            <div className="flex gap-2">
-              <img src={instagram} alt="Instagram" />
-              <img src={facebook} alt="Facebook" />
-              <img src={linkedin} alt="LinkedIn" />
-              <img src={twitter} alt="Twitter" />
-              <img src={youtube} alt="YouTube" />
+          {/* Social Links */}
+          <div className="hidden lg:flex items-center space-x-2">
+            <p className="text-sm">We’re on your favourite socials!</p>
+            <div className="flex space-x-2">
+              <img src={instagram} alt="Instagram" className="h-6 w-6" />
+              <img src={facebook} alt="Facebook" className="h-6 w-6" />
+              <img src={linkedin} alt="LinkedIn" className="h-6 w-6" />
+              <img src={twitter} alt="Twitter" className="h-6 w-6" />
+              <img src={youtube} alt="YouTube" className="h-6 w-6" />
             </div>
           </div>
-
-          {/* Hamburger Menu */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden focus:outline-none"
-          >
-            <svg
-              className="w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
         </div>
 
-        {/* Navbar Section */}
-        <div className="flex gap-[200px] items-center">
+        {/* Navbar Links */}
+        <div className="flex justify-between items-center">
+          <nav className="flex justify-center items-center text-center space-x-10 mt-4">
+            {Object.keys(dropdownData).map((menu, index) => (
+              <div
+                key={index}
+                className="relative"
+                onClick={() => handleMenuClick(menu)}
+              >
+                {/* Menu Item */}
+                <p
+                  className={`${
+                    activeMenu === menu
+                      ? "bg-yellow-400 text-blue-900"
+                      : "hover:text-yellow-400"
+                  } cursor-pointer text-lg p-2 rounded-md`}
+                >
+                  <Link to={dropdownData[menu][0].path}>{menu}</Link>
+                </p>
+              </div>
+            ))}
+          </nav>
+        </div>
 
-        <div className="flex items-center gap-4">
-            <img src={collegelogo} className="h-14" alt="CollegeDekho Logo" />
-          </div>
-          <nav
-            className={`${
-              isMenuOpen ? "block" : "hidden"
-            } md:flex justify-between mt-4 items-center `}
-          >
-            <div className="flex flex-col md:flex-row space-x-0 md:space-x-6 text-sm font-medium gap-10">
-              {Object.keys(dropdownData).map((buttonName, index) => (
-                <div key={index} className="relative group">
-                  <p className="hover:text-yellow-400 cursor-pointer">
-                    {buttonName}
-                  </p>
-                  <div className="absolute left-1/2 top-full mt-2 hidden group-hover:flex bg-white text-black shadow-lg rounded-md p-4 w-[900px] -translate-x-1/2 z-10">
-                    {dropdownData[buttonName].map((category, catIndex) => (
-                      <div key={catIndex} className="w-1/4 px-2">
-                        <p className="font-semibold text-blue-900 mb-2">
-                          {category.title}
-                        </p>
-                        <ul className="space-y-1">
-                          {category.items.map((item, itemIndex) => (
-                            <li
-                              key={itemIndex}
-                              className="text-sm hover:text-blue-500 cursor-pointer"
-                            >
-                              <a href="#" className="block">
-                                {item}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
+        {/* Dropdown */}
+        {isDropdownOpen && activeMenu && (
+          <div className="absolute text-center lg:text-2xl left-1/2 transform -translate-x-1/2 mt-6 bg-white text-black shadow-lg rounded-md w-[80%] z-50">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 ">
+              {dropdownData[activeMenu].map((category, catIndex) => (
+                <div key={catIndex}>
+                  <ul className="space-y-1">
+                    <li
+                      key={catIndex}
+                      className="text-sm hover:text-blue-500 cursor-pointer lg:text-xl"
+                    >
+                      <Link to={category.path}>
+                        {category.path === "/colleges" ? "Colleges" : ""}
+                        {/* Customize the link text based on the category */}
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
               ))}
             </div>
-          </nav>
-        </div>
+          </div>
+        )}
       </div>
     </header>
   );

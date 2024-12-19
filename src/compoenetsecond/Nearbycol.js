@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+
+// Import your images
 import image1 from '../compoenetsecond/allimages/1421771178_G4LDclw.jpg';
 import image2 from '../compoenetsecond/allimages/1423588402.jpg';
 import image3 from '../compoenetsecond/allimages/1442991790.jpg';
@@ -24,6 +26,7 @@ import image22 from '../compoenetsecond/allimages/292040941_2272492752913115_463
 import image23 from '../compoenetsecond/allimages/theem_logo.jpg';
 import image24 from '../compoenetsecond/allimages/viva-institute-of-technology-vit-thane.jpg';
 
+// Carousel Component
 const Carousel = ({ title, items }) => {
   const carouselRef = useRef(null);
 
@@ -40,8 +43,8 @@ const Carousel = ({ title, items }) => {
   };
 
   return (
-    <div className="mb-8">
-      <h2 className="text-lg font-semibold mb-4 flex justify-center">{title}</h2>
+    <div className="mb-8 px-4 sm:px-6 lg:px-8">
+      <h2 className="text-lg font-semibold mb-4 text-center">{title}</h2>
       <div className="relative">
         {/* Left Button */}
         <button
@@ -54,26 +57,25 @@ const Carousel = ({ title, items }) => {
         {/* Carousel Container */}
         <div
           ref={carouselRef}
-          className="flex overflow-hidden gap-4 p-4"
+          className="flex overflow-x-auto gap-4 p-4 scrollbar-hidden"
           style={{
-            scrollbarWidth: 'none', // For Firefox
             msOverflowStyle: 'none', // For IE/Edge
+            scrollbarWidth: 'none', // For Firefox
           }}
         >
           {items.map((item, index) => (
-  <div
-    key={index}
-    className="min-w-[150px] text-center flex-shrink-0"
-  >
-    <img
-      src={item.image}
-      alt={item.caption}
-      className="w-[150px] h-[150px] object-cover border border-gray-300 rounded mb-2"
-    />
-    <p className="text-sm">{item.caption}</p>
-  </div>
-))}
-
+            <div
+              key={index}
+              className="flex-shrink-0 text-center min-w-[150px] sm:min-w-[180px] md:min-w-[200px] lg:min-w-[250px]"
+            >
+              <img
+                src={item.image}
+                alt={item.caption}
+                className="w-full h-[150px] sm:h-[180px] md:h-[200px] lg:h-[250px] object-cover border border-gray-300 rounded mb-2"
+              />
+              <p className="text-sm">{item.caption}</p>
+            </div>
+          ))}
         </div>
 
         {/* Right Button */}
@@ -88,6 +90,7 @@ const Carousel = ({ title, items }) => {
   );
 };
 
+// Main Nearbycol Component
 const Nearbycol = () => {
   const sampleData = [
     { image: image1, caption: 'Campus View 1' },

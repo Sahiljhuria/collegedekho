@@ -18,43 +18,43 @@ const Medianews = () => {
       id: "media",
       label: "Media",
       data: [
-        { id: 1, image: image1,  text: "London-based Man Capital backs CollegeDekho" },
+        { id: 1, image: image1, text: "London-based Man Capital backs CollegeDekho" },
         { id: 2, image: image2, text: "CollegeDekho Helps Secure 20K Admissions" },
-        { id: 3, image: image3,  text: "Winter Capital Doubles Down On CollegeDekho Investment, Pumps In $9 Mn" },
+        { id: 3, image: image3, text: "Winter Capital Doubles Down On CollegeDekho Investment, Pumps In $9 Mn" },
       ],
     },
     {
       id: "articles",
       label: "Articles",
       data: [
-        { id: 4, image: image4,  text: "What is a Good MICAT 2025 Score?" },
-        { id: 5, image: image5,  text: "Things to Carry to Snap 2024 Exam Center." },
-        { id: 6, image: image6,  text: "MCC NEET counselling Process 2024 (over):Important Dates,Seat Matrix." },
+        { id: 4, image: image4, text: "What is a Good MICAT 2025 Score?" },
+        { id: 5, image: image5, text: "Things to Carry to Snap 2024 Exam Center." },
+        { id: 6, image: image6, text: "MCC NEET counselling Process 2024 (over): Important Dates, Seat Matrix." },
       ],
     },
     {
       id: "news",
       label: "News",
       data: [
-        { id: 7, image: image7,  text: "UP  Board 10th Time Table 2025" },
-        { id: 8, image: image8,  text: "RBSE Board 10th Time Table 2025" },
-        { id: 9, image: image9,  text: "RBSE Board 10th Time Table 2025" },
+        { id: 7, image: image7, text: "UP Board 10th Time Table 2025" },
+        { id: 8, image: image8, text: "RBSE Board 10th Time Table 2025" },
+        { id: 9, image: image9, text: "RBSE Board 10th Time Table 2025" },
       ],
     },
     {
       id: "boards",
       label: "Boards",
       data: [
-        { id: 10, image: image10, text: "UP  Board 10th Time Table 2025" },
-        { id: 11, image: image11,text: "RBSE Board 10th Time Table 2025" },
-        { id: 12, image: image12, text: "RBSE Board 10th Time Table 2025"},
+        { id: 10, image: image10, text: "UP Board 10th Time Table 2025" },
+        { id: 11, image: image11, text: "RBSE Board 10th Time Table 2025" },
+        { id: 12, image: image12, text: "RBSE Board 10th Time Table 2025" },
       ],
     },
     {
       id: "partners",
       label: "Top Partner Colleges",
       data: [
-        { id: 13, image: image4,  text: "XYZ University - Top Rankings in 2024." },
+        { id: 13, image: image4, text: "XYZ University - Top Rankings in 2024." },
         { id: 14, image: image5, text: "ABC Institute - Excellence in Engineering." },
         { id: 15, image: image6, text: "LMN College - Best Placements in the Region." },
       ],
@@ -62,21 +62,20 @@ const Medianews = () => {
   ];
 
   const [activeTab, setActiveTab] = useState("media");
-
   const activeData = tabs.find((tab) => tab.id === activeTab)?.data || [];
 
   return (
-    <div className="max-w-6xl mx-auto p-6 mb-16 mt-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 mt-16">
       {/* Tabs */}
-      <div className="flex justify-center space-x-6 mb-6 border-b border-gray-200">
+      <div className="flex flex-wrap justify-center gap-4 border-b border-gray-200 mb-8">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 text-lg font-medium ${
+            className={`px-4 py-2 text-sm sm:text-lg font-medium rounded-t ${
               activeTab === tab.id
-                ? "text-blue-500 border-b-2 border-blue-500"
-                : "text-gray-500 hover:text-gray-700"
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-600 hover:text-gray-800"
             }`}
           >
             {tab.label}
@@ -85,15 +84,18 @@ const Medianews = () => {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 h-28 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {activeData.map((item) => (
           <div
             key={item.id}
-            className="p-6 bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow"
+            className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
           >
-            <img src={item.image} alt={item.title} className="mb-4 rounded-lg" />
-            <h3 className="font-bold text-xl mb-3">{item.title}</h3>
-            <p className="text-gray-600">{item.text}</p>
+            <img
+              src={item.image}
+              alt={item.text}
+              className="w-full h-48 sm:h-56 object-cover rounded-lg mb-4"
+            />
+            <p className="text-gray-700 text-sm sm:text-base font-semibold">{item.text}</p>
           </div>
         ))}
       </div>

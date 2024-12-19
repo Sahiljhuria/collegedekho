@@ -9,6 +9,7 @@ const AlamuriInstitute = () => {
       {/* Left Section: Content */}
       <div className="flex-1 lg:pr-8">
         <img src={image3} className="m-3 border-2 border-gray-300" />
+        
         {/* Title and Subtitle */}
         <div className="mb-4">
           <p className="text-2xl font-semibold leading-tight">

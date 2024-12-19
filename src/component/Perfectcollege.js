@@ -326,81 +326,91 @@ const Perfectcollege = () => {
   const [activeTab, setActiveTab] = useState("Engineering");
 
   return (
-    <div >
-
-        <div className="text-center mt-12">
-            <p className="text-4xl font-semibold">Find The Perfect College For You</p>
-            <p className="text-gray-600 mt-4 text-xl mb-6">Discover top colleges, exams, and opportunities in your preferred field.</p>
-
-
-        </div>
-
-
-
-
-
-    <div className="bg-gray-100 p-4 ">
-      {/* Tabs */}  
-
-      
-      <div className="flex justify-center items-center   gap-2  overflow-x-auto border-b border-gray-300 mb-4">
-        {tabs.map((tab) => (
-          <button 
-            key={tab.name}
-            onClick={() => setActiveTab(tab.name)}
-            className={`py-2 px-4 text-sm font-semibold ${
-              activeTab === tab.name
-                ? "text-blue-500 border-b-4 border-orange-500 font-semibold"
-                : "text-gray-500 hover:text-blue-500    "
-            }`}
-          >
-            {tab.name}
-          </button>
-        ))}
+    <div className="p-4">
+      {/* Header */}
+      <div className="text-center mt-6 md:mt-12">
+        <p className="text-2xl md:text-4xl font-semibold">Find The Perfect College For You</p>
+        <p className="text-gray-600 mt-2 md:mt-4 text-sm md:text-lg mb-4 md:mb-6">
+          Discover top colleges, exams, and opportunities in your preferred field.
+        </p>
       </div>
 
-      {/* Content */}
-      <div className="flex flex-wrap gap-4">
-        {/* Left Column (Featured Colleges) */}
-        <div className="flex-1 bg-[#E9ECFF]  rounded shadow text-gray-800 h-80">
-          <h4 className="font-semibold  p-4">{content[activeTab][0].title}</h4>
-          <ul className="space-y-1  flex flex-wrap ">
-            {content[activeTab][0].items.map((item, idx) => (
-              <li
-                key={idx}
-                className="text-sm  flex justify-center items-center   bg-white text-black px-3 py-1 border border-blue-300 rounded-md hover:bg-blue-500 hover:text-white transition  font-semibold h-10 ml-2 mt-2 hover:cursor-pointer"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+      {/* Tabs */}
+      <div className="bg-gray-100 p-2 sm:p-4">
+        <div className="flex justify-start sm:justify-center gap-2 overflow-x-auto border-b border-gray-300 mb-4">
+          {tabs.map((tab) => (
+            <button
+              key={tab.name}
+              onClick={() => setActiveTab(tab.name)}
+              className={`py-2 px-3 sm:px-4 text-xs sm:text-sm md:text-base font-semibold ${
+                activeTab === tab.name
+                  ? "text-blue-500 border-b-4 border-orange-500"
+                  : "text-gray-500 hover:text-blue-500"
+              }`}
+            >
+              {tab.name}
+            </button>
+          ))}
         </div>
 
-        {/* Right Column */}
-        <div className="flex-1 flex flex-col gap-4 ">
-          {/* Important Exams */}
-          <div className="bg-[#E9ECFF] p-4 rounded shadow text-gray-800 h-40">
-            <h4 className="font-semibold mb-2">{content[activeTab][1].title}</h4>
-            <ul className="flex flex-wrap">
-              {content[activeTab][1].items.map((item, idx) => (
-                <li
-                  key={idx}
-                  className="text-sm flex justify-center items-center ml-2 mt-2 bg-white text-black px-3 py-1 border border-blue-300 rounded-md hover:bg-blue-500 hover:text-white transition h-10 font-semibold "
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Top States */}
-          <div className="bg-[#E9ECFF] p-4 rounded shadow text-gray-800 h-36 ">
-            <h4 className="font-semibold mb-2">{content[activeTab][2].title}</h4>
+        {/* Content */}
+        <div className="flex flex-wrap gap-4">
+          {/* Left Column (Featured Colleges) */}
+          <div className="w-full lg:flex-1 bg-[#E9ECFF] rounded shadow text-gray-800 p-2 sm:p-4">
+            <h4 className="font-semibold text-sm md:text-lg mb-2">{content[activeTab][0].title}</h4>
             <ul className="flex flex-wrap gap-2">
-              {content[activeTab][2].items.map((item, idx) => (
+              {content[activeTab][0].items.map((item, idx) => (
                 <li
                   key={idx}
-                  className="text-sm flex justify-center items-center bg-white text-black px-3 py-1 border border-blue-300 rounded-md hover:bg-blue-500 hover:text-white transition h-10 font-semibold"
+                  className="text-xs sm:text-sm flex justify-center items-center bg-white text-black px-3 py-1 border border-blue-300 rounded-md hover:bg-blue-500 hover:text-white transition cursor-pointer"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right Column */}
+          <div className="w-full lg:flex-1 flex flex-col gap-4">
+            {/* Important Exams */}
+            <div className="bg-[#E9ECFF] p-2 sm:p-4 rounded shadow text-gray-800">
+              <h4 className="font-semibold text-sm md:text-lg mb-2">{content[activeTab][1].title}</h4>
+              <ul className="flex flex-wrap gap-2">
+                {content[activeTab][1].items.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="text-xs sm:text-sm flex justify-center items-center bg-white text-black px-3 py-1 border border-blue-300 rounded-md hover:bg-blue-500 hover:text-white transition"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Top States */}
+            <div className="bg-[#E9ECFF] p-2 sm:p-4 rounded shadow text-gray-800">
+              <h4 className="font-semibold text-sm md:text-lg mb-2">{content[activeTab][2].title}</h4>
+              <ul className="flex flex-wrap gap-2">
+                {content[activeTab][2].items.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="text-xs sm:text-sm flex justify-center items-center bg-white text-black px-3 py-1 border border-blue-300 rounded-md hover:bg-blue-500 hover:text-white transition"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Related Courses */}
+          <div className="w-full lg:flex-1 bg-[#E9ECFF] p-2 sm:p-4 rounded shadow text-gray-800">
+            <h4 className="font-semibold text-sm md:text-lg mb-2">{content[activeTab][3].title}</h4>
+            <ul className="flex flex-wrap gap-2">
+              {content[activeTab][3].items.map((item, idx) => (
+                <li
+                  key={idx}
+                  className="text-xs sm:text-sm flex justify-center items-center bg-white text-black px-3 py-1 border border-blue-300 rounded-md hover:bg-blue-500 hover:text-white transition"
                 >
                   {item}
                 </li>
@@ -408,23 +418,7 @@ const Perfectcollege = () => {
             </ul>
           </div>
         </div>
-
-        {/* Related Courses (Left Column) */}
-        <div className="flex-1 bg-[#E9ECFF] p-4 rounded shadow text-gray-800">
-          <h4 className="font-semibold mb-2">{content[activeTab][3].title}</h4>
-          <ul className="space-y-2 flex flex-wrap">
-            {content[activeTab][3].items.map((item, idx) => (
-              <li
-                key={idx}
-                className="text-sm ml-2 mt-2 flex justify-center items-center bg-white px-3 py-1 border border-blue-300 rounded-md hover:bg-blue-500 hover:text-white transition h-10 font-semibold"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
-    </div>
     </div>
   );
 };

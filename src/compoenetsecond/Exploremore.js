@@ -56,7 +56,7 @@ const Exploremore = () => {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       {/* Tabs */}
-      <div className="flex justify-center space-x-4 mb-6">
+      <div className="flex justify-center space-x-4 mb-6 flex-wrap">
         <button
           onClick={() => setActiveTab("state")}
           className={`px-6 py-2 rounded border ${
@@ -76,7 +76,7 @@ const Exploremore = () => {
       </div>
 
       {/* Data Sections */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Degree Section */}
         <div className="bg-white p-4 rounded shadow">
           <h2 className="font-bold text-lg mb-4">By Degree</h2>

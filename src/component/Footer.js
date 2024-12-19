@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer className="bg-black text-white py-8">
       {/* Main Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 px-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 px-5">
         {/* More To Explore */}
         <div>
           <h3 className="font-semibold">More To Explore</h3>
@@ -72,7 +72,7 @@ export const Footer = () => {
 
       {/* Trending Links Section */}
       <div className="bg-black text-gray-400 text-sm mt-14 py-8">
-        <div className=" mx-auto px-4">
+        <div className="mx-auto px-4">
           {/* Section Headings */}
           <div className="ml-5 mb-8">
             <h6 className="text-white font-semibold mb-4 text-lg">
@@ -87,7 +87,7 @@ export const Footer = () => {
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 px-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 px-5">
             {/* Column 1 */}
             <div>
               <ul className="space-y-1">

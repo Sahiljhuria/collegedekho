@@ -25,40 +25,46 @@ const Youtube = () => {
   };
 
   return (
-    <div className="relative mx-auto overflow-hidden mt-16 w-[600px] h-[400px] rounded-xl">
-      {/* Slides */}
-
-      <div className="text-4xl font-semibold text-center mb-10">Top Colleges  Recommended For You</div>
-      <div
-        className="flex transition-transform duration-500"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {slides.map((url, index) => (
-          <iframe
-            key={index}
-            src={url}
-            className="w-[600px] h-[400px] flex-shrink-0"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            title={`Video ${index + 1}`}
-          ></iframe>
-        ))}
+    <div className="relative mx-auto mt-16 w-full max-w-7xl px-4">
+      {/* Title */}
+      <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-8 text-gray-800">
+        Top Colleges Recommended For You
       </div>
 
-      {/* Navigation Buttons */}
-      <button
-        className="absolute top-1/2 left-4 -translate-y-1/2 bg-gray-800 text-white rounded-full p-2"
-        onClick={handlePrev}
-      >
-        &#8592;
-      </button>
-      <button
-        className="absolute top-1/2 right-4 -translate-y-1/2 bg-gray-800 text-white rounded-full p-2"
-        onClick={handleNext}
-      >
-        &#8594;
-      </button>
+      {/* Video Slider */}
+      <div className="relative overflow-hidden rounded-xl">
+        <div
+          className="flex transition-transform duration-500"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {slides.map((url, index) => (
+            <div key={index} className="flex-shrink-0 w-full">
+              <iframe
+                src={url}
+                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] rounded-xl"
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title={`Video ${index + 1}`}
+              ></iframe>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Buttons */}
+        <button
+          className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 sm:p-3 hover:bg-gray-900 transition duration-300"
+          onClick={handlePrev}
+        >
+          &#8592;
+        </button>
+        <button
+          className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-gray-700 text-white rounded-full p-2 sm:p-3 hover:bg-gray-900 transition duration-300"
+          onClick={handleNext}
+        >
+          &#8594;
+        </button>
+      </div>
     </div>
   );
 };

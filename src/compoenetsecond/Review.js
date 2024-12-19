@@ -71,7 +71,7 @@ const ReviewCard = ({
   hostelRating,
 }) => {
   return (
-    <div className="w-11/12 mx-auto bg-white shadow-md rounded-lg p-10 flex flex-col justify-between">
+    <div className="w-full sm:w-11/12 mx-auto bg-white shadow-md rounded-lg p-6 sm:p-10 flex flex-col justify-between">
       <h3 className="text-sm font-semibold">{title}</h3>
       <p className="text-gray-500 text-xs">
         By {reviewerName}, {course} | {year}
@@ -89,7 +89,7 @@ const ReviewCard = ({
           <span className="text-yellow-500 font-bold">{hostelRating}★</span>
         </div>
       </div>
-      <div className="flex items-center justify-between text-xs">
+      <div className="flex items-center justify-between text-xs mt-2">
         <a href="#" className="text-blue-500 underline">
           Show Less
         </a>
@@ -101,12 +101,12 @@ const ReviewCard = ({
 
 const Review = () => {
   return (
-    <div className="w-11/12 mx-auto space-y-4 mt-16">
-      <div className="w-11/12 mx-auto  rounded-lg p-10 bg-white">
+    <div className="w-full sm:w-11/12 mx-auto space-y-4 mt-16">
+      <div className="w-full sm:w-11/12 mx-auto rounded-lg p-6 sm:p-10 bg-white">
         <p className="font-semibold text-lg mb-4">
           Top Courses at Alamuri Ratnamala Institute of Engineering and Technology
         </p>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <p className="border border-gray-400 text-sm py-2 px-4 rounded-full text-center">
             Alamuri Ratnamala Institute of Engineering and Technology B.Tech
           </p>
@@ -121,8 +121,8 @@ const Review = () => {
           </p>
         </div>
       </div>
-      <div className="w-11/12 mx-auto ">
-        <h2 className="text-xl font-bold mb-7 ml-14">
+      <div className="w-full sm:w-11/12 mx-auto">
+        <h2 className="text-xl font-bold mb-7 ml-14 sm:ml-0">
           Alamuri Ratnamala Institute of Engineering and Technology Reviews
         </h2>
         <div className="space-y-4">
